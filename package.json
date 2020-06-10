@@ -1,0 +1,34 @@
+{
+  "name": "playread",
+  "version": "0.0.1",
+  "description": "Reader program for dramatic works",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx parcel src/public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stephenfrancis/playread"
+  },
+  "author": "stephen.d.francis@gmail.com",
+  "license": "GPL-3.0-or-later",
+  "dependencies": {
+    "loglevel": "^1.6.8",
+    "marked": "^1.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "ultistore": "0.0.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "@types/node": "^14.0.10",
+    "@types/react": "^16.9.35",
+    "jest": "^24",
+    "nyc": "^15.0.0",
+    "parcel-bundler": "^1.12.4",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^4.2.0",
+    "typescript": "^3.9.3",
+    "ultimake": "0.4.1"
+  }
+}
