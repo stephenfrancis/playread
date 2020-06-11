@@ -12,6 +12,7 @@ const PATTERNS = {
   scene_dir: /^SCENE: (.*)/,
   named_person: /^(\w+): (.*)/,
   new_speaker: /^([A-Z]+)\.$/,
+  stage_dir: /^ (.*)/,
   end_of_book: /^End of the Project Gutenberg EBook of/,
 };
 
@@ -109,10 +110,23 @@ const PROCESSORS = [
         text: [],
       };
       current_scene_obj.content.push(context.curr_line);
+      context.prev_line = null;
       return;
     }
     if (!context.curr_line) {
       throw new Error(`unexpected state: no current line at ${context.act_index}/${context.scene_index} ${line}`);
+    }
+    if (PATTERNS.stage_dir.test(line) && (context.curr_line.type !== "stage_direct")) {
+      context.prev_line = context.curr_line;
+      context.curr_line = {
+        type: "stage_direct",
+        text: [],
+      };
+      current_scene_obj.content.push(context.curr_line);
+    }
+    if (!PATTERNS.stage_dir.test(line) && (context.curr_line.type === "stage_direct")) {
+      context.curr_line = context.prev_line;
+      context.prev_line = null;
     }
     context.curr_line.text.push(line);
   },
@@ -141,4 +155,6 @@ const main = () => {
   return context.out;
 }
 
-console.log(JSON.stringify(main(), null, "  "));
+Fs.writeFileSync("src/data/tempest.json", JSON.stringify(main(), null, "  "), {
+  encoding: "utf8",
+});
