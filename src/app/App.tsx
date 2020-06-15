@@ -1,17 +1,25 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import data from "../data/tempest.json";
-import Scene from "./Scene";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Home from "./Home";
+import Play from "./Play";
 
 interface Props {}
 
 
-const App: React.SFC<Props> = (props) => {
+const App: React.SFC<Props> = () => {
   return (
-    <div>
-      <Scene scene={data.acts[0].scenes[0]} />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/:play/:act/:scene">
+          <Play />
+        </Route>
+        <Route>
+          <Home />
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

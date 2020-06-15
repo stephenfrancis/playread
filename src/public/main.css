@@ -1,37 +1,45 @@
 
-.list {
-  display: flex;
-  flex-flow: column nowrap;
+body {
+  margin: 0;
+  padding-top: 45px;
 }
 
-.list > div {
-  display: flex;
-  flex-flow: row nowrap;
-}
-
-.list > div > div:nth-child(1) {
-  flex: 0 0 5%;
-}
-
-.list > div > div:nth-child(2) {
-  flex: 0 0 10%;
-}
-
-.list > div > div:nth-child(3) {
-  flex: 0 0 10%;
-}
-
-.list > div > div:nth-child(4) {
-  flex: 0 0 20%;
-}
-
-
-.detail {
-  display: flex;
-  flex-flow: column nowrap;
-}
-
-.detail > div:nth-child(2) {
+.header {
+  background-color: #ddd;
+  border-bottom: 1px solid #aaa;
+  box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 20px;
+  max-width: 1600px;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.header > div:nth-child(1) {
+  flex-grow: 1;
+}
+
+.header > div:nth-child(2) {
+  width: 25px;
+}
+
+.header > div:nth-child(3) {
+  width: 50px;
+}
+
+.header > div:nth-child(4) {
+  width: 80px;
+}
+
+.header > div:nth-child(5) {
+  width: 25px;
+}
+
+.scene {
+  padding: 10px;
 }

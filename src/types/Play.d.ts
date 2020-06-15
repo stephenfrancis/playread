@@ -1,8 +1,10 @@
 
 export interface Play {
   acts: Act[];
+  author?: string;
   dramatis_personae: string[];
   scene_direction?: string;
+  title: string;
 }
 
 export interface Act {
