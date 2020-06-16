@@ -16,14 +16,14 @@ interface Props {
 const Header: React.SFC<Props> = (props) => {
   const prevScene = () => {
     return (
-      <Link to={`/tempest/${props.prev_scene[0]}/${props.prev_scene[1]}`}>
+      <Link to={`/${props.prev_scene[0]}/${props.prev_scene[1]}`}>
         <AngleLeft />
       </Link>
     )
   };
   const nextScene = () => {
     return (
-      <Link to={`/tempest/${props.next_scene[0]}/${props.next_scene[1]}`}>
+      <Link to={`/${props.next_scene[0]}/${props.next_scene[1]}`}>
         <AngleRight />
       </Link>
     )

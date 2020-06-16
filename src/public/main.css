@@ -5,6 +5,7 @@ body {
 }
 
 .header {
+  align-items: center;
   background-color: #ddd;
   border-bottom: 1px solid #aaa;
   box-sizing: border-box;
@@ -12,7 +13,6 @@ body {
   flex-flow: row nowrap;
   font-size: 20px;
   font-weight: bold;
-  margin-right: 20px;
   max-width: 1600px;
   padding: 10px;
   position: fixed;
@@ -38,6 +38,10 @@ body {
 
 .header > div:nth-child(5) {
   width: 25px;
+}
+
+.header svg {
+  vertical-align: text-top;
 }
 
 .scene {

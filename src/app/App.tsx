@@ -12,7 +12,7 @@ const App: React.SFC<Props> = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/:play/:act/:scene">
+        <Route path="/:play">
           <Play />
         </Route>
         <Route>
