@@ -60,6 +60,7 @@ const LoadedPlay: React.SFC<LoadedProps> = (props) => {
       />
       <Scene
         getPersonLabel={getPersonLabel}
+        ident={`${curr_act_num}.${curr_scene_num}`}
         scene={curr_scene}
       />
     </div>

@@ -19,6 +19,7 @@ export interface Scene {
 }
 
 export interface Content {
+  first_line: number;
   text: string[];
 }
 

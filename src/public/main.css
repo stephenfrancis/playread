@@ -45,5 +45,11 @@ body {
 }
 
 .scene {
-  padding: 10px;
+  height: calc(100vh - 80px); /* scrolling at the scene div */
+  overflow-y: scroll;
+  padding: 20px;
+}
+
+.current_line {
+  background-color: #ddd;
 }

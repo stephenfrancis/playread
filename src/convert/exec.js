@@ -106,6 +106,7 @@ const PROCESSORS = {
     }
     const current_act_obj = context.out.acts[context.act_index];
     if (PATTERNS.scene_title.test(line)) {
+      context.current_line_number = 1;
       const current_scene = PATTERNS.scene_title.exec(line)[1];
       if (typeof context.scene_index !== "number") {
         context.scene_index = 0;
@@ -124,6 +125,7 @@ const PROCESSORS = {
     }
     if (PATTERNS.new_speaker.test(line)) {
       context.curr_line = {
+        first_line: context.current_line_number,
         speaker: PATTERNS.new_speaker.exec(line)[1],
         text: [],
       };
@@ -137,6 +139,7 @@ const PROCESSORS = {
     if (PATTERNS.stage_dir.test(line) && (context.curr_line.type !== "stage_direct")) {
       context.prev_line = context.curr_line;
       context.curr_line = {
+        first_line: context.current_line_number,
         type: "stage_direct",
         text: [],
       };
@@ -147,6 +150,7 @@ const PROCESSORS = {
       context.prev_line = null;
     }
     context.curr_line.text.push(line);
+    context.current_line_number += 1;
   },
   40: (line, context) => {    // state 40: rest
     if (!line) {
