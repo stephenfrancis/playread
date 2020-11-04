@@ -1,53 +1,47 @@
-
 import * as React from "react";
 import { Content, ContentSpeech } from "../types/Play";
+import Line from "./Line";
 
 interface Props {
   content: Content;
-  counter: { line_number: number, scroll_position_map: number[] };
   getPersonLabel: (speaker: string) => string;
   ident: string;
+  scroll_position_map: number[];
   selected_line: number;
 }
 
-const Speech: React.SFC<Props> = (props) => {
-  let line_number = props.content.first_line;
+const Speech: React.FC<Props> = (props) => {
   const Speaker = (speaker: string) => {
     if (!speaker) {
       return;
     }
     const label = props.getPersonLabel(speaker);
     if (label) {
-      return (
-        <a title={label}>{speaker}</a>
-      );
+      return <a title={label}>{speaker}</a>;
     }
-    return (
-      <a>{speaker}</a>
-    );
+    return <a>{speaker}</a>;
   };
-  const Line = (text, index) => {
-    const line = line_number++;
-    const marker_class = (line === props.selected_line) ? "current_line" : "";
-    const refn = React.useCallback(node => {
-      if (node !== null) {
-        // console.log(`setting line ${line} scroll position: ${node.offsetTop}`);
-        props.counter.scroll_position_map[line] = node.offsetTop;
-      }
-    }, []);
-    return (
-      <span key={line} ref={refn} className={marker_class}>
-        {text}
-        <br />
-      </span>
-    );
-  };
+
   return (
-    <div>
+    <div key={props.ident}>
       {Speaker((props.content as ContentSpeech).speaker)}
-      <p>{props.content.text.map(Line)}</p>
+      <p>
+        {props.content.text.map((text, index) => {
+          const line_number: number = props.content.first_line + index;
+          const selected_line: boolean = line_number === props.selected_line;
+          return (
+            <Line
+              key={line_number}
+              line_number={line_number}
+              scroll_position_map={props.scroll_position_map}
+              selected_line={selected_line}
+              text={text}
+            />
+          );
+        })}
+      </p>
     </div>
   );
-}
+};
 
 export default Speech;

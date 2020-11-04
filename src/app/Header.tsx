@@ -1,32 +1,35 @@
-
 import * as React from "react";
 import { Link } from "react-router-dom";
-import AngleLeft  from "../assets/react/AngleLeft";
+import AngleLeft from "../assets/react/AngleLeft";
 import AngleRight from "../assets/react/AngleRight";
-
 
 interface Props {
   curr_act: number;
   curr_scene: number;
-  next_scene: [ number, number ];
-  prev_scene: [ number, number ];
+  play_id: string;
+  next_scene: [number, number];
+  prev_scene: [number, number];
   title: string;
 }
 
-const Header: React.SFC<Props> = (props) => {
+const Header: React.FC<Props> = (props) => {
   const prevScene = () => {
     return (
-      <Link to={`/${props.prev_scene[0]}/${props.prev_scene[1]}`}>
+      <Link
+        to={`/${props.play_id}/${props.prev_scene[0]}/${props.prev_scene[1]}`}
+      >
         <AngleLeft />
       </Link>
-    )
+    );
   };
   const nextScene = () => {
     return (
-      <Link to={`/${props.next_scene[0]}/${props.next_scene[1]}`}>
+      <Link
+        to={`/${props.play_id}/${props.next_scene[0]}/${props.next_scene[1]}`}
+      >
         <AngleRight />
       </Link>
-    )
+    );
   };
   return (
     <div className="header">
@@ -37,6 +40,6 @@ const Header: React.SFC<Props> = (props) => {
       <div>{props.next_scene && nextScene()}</div>
     </div>
   );
-}
+};
 
 export default Header;

@@ -3,9 +3,14 @@
   "version": "0.0.1",
   "description": "Reader program for dramatic works",
   "scripts": {
-    "build": "node src/convert/exec.js",
-    "start": "npx parcel src/public/index.html",
-    "svg2react": "npx @svgr/cli src/assets/raw --out-dir src/assets/react --typescript"
+    "build": "npm run build:client && npm run build:convert",
+    "build:client": "npx parcel build src/public/index.html",
+    "build:convert": "node src/convert/exec.js",
+    "build:server": "npx tsc",
+    "clean": "rm -f -r .cache dist/*",
+    "serve": "npx parcel serve src/public/index.html",
+    "svg2react": "npx @svgr/cli src/assets/raw --out-dir src/assets/react --typescript",
+    "web": "heroku local web"
   },
   "repository": {
     "type": "git",
@@ -14,6 +19,8 @@
   "author": "stephen.d.francis@gmail.com",
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "koa": "^2.13.0",
+    "koa-static": "^5.0.0",
     "loglevel": "^1.6.8",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
