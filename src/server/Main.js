@@ -1,3 +1,4 @@
+const Fs = require("fs");
 const Koa = require("koa");
 const KoaStatic = require("koa-static");
 
@@ -9,10 +10,12 @@ app.use(
   })
 );
 
-app.get("/*", (req, res, next) => {
+app.use(async (ctx, next) => {
   // SPA: serve the main HTML file at ALL navigation URLs
-  if (req.headers["accept"].indexOf("text/html") > -1) {
-    res.sendFile(process.cwd() + "/build/index.html");
+  if (ctx.headers["accept"].indexOf("text/html") > -1) {
+    // res.sendFile(process.cwd() + "/build/index.html");
+    ctx.type = "html";
+    ctx.body = Fs.createReadStream(process.cwd() + "/build/index.html");
   } else {
     next();
   }
