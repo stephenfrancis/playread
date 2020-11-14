@@ -1,7 +1,15 @@
-
 body {
   margin: 0;
   padding-top: 45px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.home {
+  padding: 20px;
 }
 
 .header {
@@ -44,12 +52,35 @@ body {
   vertical-align: text-top;
 }
 
-.scene {
-  height: calc(100vh - 80px); /* scrolling at the scene div */
-  overflow-y: scroll;
+.play_summary {
   padding: 20px;
 }
 
-.current_line {
+.play_summary > div:nth-child(1) {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.scene {
+  height: calc(100vh - 80px); /* scrolling at the scene div */
+  overflow-y: scroll;
+  padding: 20px 0;
+}
+
+.scene_direction {
+  padding: 10px 20px;
+}
+
+.speech {
+  padding: 10px 20px;
+}
+
+.selected_speech {
   background-color: #ddd;
+}
+
+.speaker {
+  display: block;
+  padding-bottom: 5px;
 }

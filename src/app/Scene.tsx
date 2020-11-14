@@ -57,19 +57,17 @@ const HighLightLine: React.FC<HighlightLineProps> = (props) => {
   };
   return (
     <div className="scene" ref={div_ref} onScroll={onScroll}>
-      <p>{props.scene.direction}</p>
-      <div>
-        {props.scene.content.map((content, index) => (
-          <Speech
-            content={content}
-            getPersonLabel={props.getPersonLabel}
-            ident={`${props.ident}.${index}`}
-            key={index}
-            scroll_position_map={props.scroll_position_map}
-            selected_line={line}
-          />
-        ))}
-      </div>
+      <p className="scene_direction">{props.scene.direction}</p>
+      {props.scene.content.map((content, index) => (
+        <Speech
+          content={content}
+          getPersonLabel={props.getPersonLabel}
+          ident={`${props.ident}.${index}`}
+          key={index}
+          scroll_position_map={props.scroll_position_map}
+          selected_line={line}
+        />
+      ))}
     </div>
   );
 };

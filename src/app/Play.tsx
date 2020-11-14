@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Route, useParams, useRouteMatch } from "react-router-dom";
+import { Route, Switch, useParams, useRouteMatch } from "react-router-dom";
 import Header from "./Header";
+import PlaySummary from "./PlaySummary";
 import Scene from "./Scene";
 import * as Types from "../types/Play";
 // import data from "../data/tempest.json";
@@ -88,12 +89,16 @@ const Play: React.FC<Props> = () => {
       });
   }
   return (
-    <Route path={`${path}/:act/:scene`}>
-      {/* <div> */}
-      {!play && <Waiting />}
-      {play && <LoadedPlay play={play} play_id={params.play_id} />}
-      {/* </div> */}
-    </Route>
+    <Switch>
+      <Route path={`${path}/:act/:scene`}>
+        {!play && <Waiting />}
+        {play && <LoadedPlay play={play} play_id={params.play_id} />}
+      </Route>
+      <Route path={`${path}`}>
+        {!play && <Waiting />}
+        {play && <PlaySummary play={play} play_id={params.play_id} />}
+      </Route>
+    </Switch>
   );
 };
 

@@ -9,4 +9,12 @@ app.use(
   })
 );
 
+app.get("/*", (req, res, next) => {
+  // SPA: serve the main HTML file at ALL navigation URLs
+  if (req.headers["accept"].indexOf("text/html") > -1) {
+    res.sendFile(process.cwd() + "/build/index.html");
+  } else {
+    next();
+  }
+});
 const server = app.listen(process.env.PORT || 3000);

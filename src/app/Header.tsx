@@ -4,11 +4,11 @@ import AngleLeft from "../assets/react/AngleLeft";
 import AngleRight from "../assets/react/AngleRight";
 
 interface Props {
-  curr_act: number;
-  curr_scene: number;
+  curr_act?: number;
+  curr_scene?: number;
   play_id: string;
-  next_scene: [number, number];
-  prev_scene: [number, number];
+  next_scene?: [number, number];
+  prev_scene?: [number, number];
   title: string;
 }
 
@@ -22,6 +22,12 @@ const Header: React.FC<Props> = (props) => {
       </Link>
     );
   };
+  const currAct = () => {
+    return props.curr_act && `Act ${props.curr_act}`;
+  };
+  const currScene = () => {
+    return props.curr_scene && `Scene ${props.curr_scene}`;
+  };
   const nextScene = () => {
     return (
       <Link
@@ -33,10 +39,12 @@ const Header: React.FC<Props> = (props) => {
   };
   return (
     <div className="header">
-      <div>{props.title}</div>
+      <div>
+        <Link to={`/${props.play_id}`}>{props.title}</Link>
+      </div>
       <div>{props.prev_scene && prevScene()}</div>
-      <div>Act {props.curr_act}</div>
-      <div>Scene {props.curr_scene}</div>
+      <div>{currAct()}</div>
+      <div>{currScene()}</div>
       <div>{props.next_scene && nextScene()}</div>
     </div>
   );
