@@ -39,9 +39,13 @@ const HighLightLine: React.FC<HighlightLineProps> = (props) => {
     div_ref.current.scroll(0, 0);
   }, [props.scene]);
   console.log(`HighLightLine.render() ${line}`);
+  const viewport_height = Math.max(
+    document.documentElement.clientHeight || 0,
+    window.innerHeight || 0
+  );
   const onScroll = throttler((event_target: HTMLElement) => {
     // console.log(`onScroll: position ${event_target.scrollTop}`);
-    setLine(findNearestLine(event_target.scrollTop + 150));
+    setLine(findNearestLine(event_target.scrollTop + viewport_height / 2));
   }, 250);
   const findNearestLine = (scroll_position: number) => {
     const nearest_line = props.scroll_position_map.reduce(
@@ -68,6 +72,27 @@ const HighLightLine: React.FC<HighlightLineProps> = (props) => {
           selected_line={line}
         />
       ))}
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   );
 };
