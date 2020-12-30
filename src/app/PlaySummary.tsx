@@ -29,7 +29,7 @@ const PlaySummary: React.FC<Props> = (props) => {
         <h3>Dramatis Personae</h3>
         <ul>
           {props.play.dramatis_personae.map((part) => {
-            return <li>{part}</li>;
+            return <li key={part}>{part}</li>;
           })}
         </ul>
       </div>

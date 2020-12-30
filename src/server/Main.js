@@ -15,7 +15,7 @@ app.use(async (ctx, next) => {
   if (ctx.headers["accept"].indexOf("text/html") > -1) {
     // res.sendFile(process.cwd() + "/build/index.html");
     ctx.type = "html";
-    ctx.body = Fs.createReadStream(process.cwd() + "/build/index.html");
+    ctx.body = Fs.createReadStream(process.cwd() + "/dist/index.html");
   } else {
     next();
   }

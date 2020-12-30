@@ -15,7 +15,7 @@ const Speech: React.FC<Props> = (props) => {
     if (!speaker) {
       return;
     }
-    const label = props.getPersonLabel(speaker);
+    const label = props.getPersonLabel(speaker) || "stage direction";
     return (
       <a title={label} className="speaker line">
         {speaker}

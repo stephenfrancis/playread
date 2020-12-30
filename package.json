@@ -2,14 +2,17 @@
   "name": "playread",
   "version": "0.0.1",
   "description": "Reader program for dramatic works",
+  "engines": {
+    "yarn": "^1.22"
+  },
   "scripts": {
-    "build": "npm run build:client && npm run build:convert",
-    "build:client": "npx parcel build src/public/index.html",
+    "build": "yarn run build:client && yarn run build:convert",
+    "build:client": "yarn run parcel build src/public/index.html",
     "build:convert": "node src/convert/exec.js",
     "build:server": "npx tsc",
     "clean": "rm -f -r .cache dist/*",
-    "serve": "npx parcel serve src/public/index.html",
-    "svg2react": "npx @svgr/cli src/assets/raw --out-dir src/assets/react --typescript",
+    "serve": "yarn run parcel serve src/public/index.html",
+    "svg2react": "yarn run @svgr/cli src/assets/raw --out-dir src/assets/react --typescript",
     "web": "heroku local web"
   },
   "repository": {
@@ -19,28 +22,28 @@
   "author": "stephen.d.francis@gmail.com",
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "koa": "^2.13.0",
-    "koa-static": "^5.0.0",
-    "loglevel": "^1.6.8",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "koa": "^2.13",
+    "koa-static": "^5.0",
+    "loglevel": "^1.7",
+    "react": "^16.13",
+    "react-dom": "^16.13",
+    "react-router": "^5.2",
+    "react-router-dom": "^5.2"
   },
   "devDependencies": {
     "@svgr/core": "^5.4.0",
-    "@types/jest": "^24.0.19",
-    "@types/node": "^14.0.10",
-    "@types/react": "^16.9.35",
-    "@types/react-dom": "^16.9.8",
-    "@types/react-router": "^5.1.7",
-    "@types/react-router-dom": "^5.1.5",
-    "jest": "^24",
-    "nyc": "^15.0.0",
-    "parcel-bundler": "^1.12.4",
-    "ts-jest": "^26.1.0",
-    "ts-loader": "^4.2.0",
-    "typescript": "^3.9.3",
-    "ultimake": "0.4.1"
+    "@types/jest": "^26.0",
+    "@types/node": "^14.14",
+    "@types/react": "^17.0",
+    "@types/react-dom": "^17.0",
+    "@types/react-router": "^5.1",
+    "@types/react-router-dom": "^5.1",
+    "jest": "^26.6",
+    "nyc": "^15.1",
+    "parcel": "^2.0",
+    "ts-jest": "^26.4",
+    "ts-loader": "^8.0",
+    "typescript": "^4.1",
+    "ultimake": "^0.5"
   }
 }
