@@ -2,12 +2,6 @@ import * as React from "react";
 import { Scene } from "../types/Play";
 import Speech from "./Speech";
 
-interface Props {
-  getPersonLabel: (speaker: string) => string;
-  ident: string;
-  scene: Scene;
-}
-
 const throttler = (
   callback: (event_target: HTMLElement) => void,
   interval: number
@@ -35,10 +29,10 @@ const HighLightLine: React.FC<HighlightLineProps> = (props) => {
   const [line, setLine] = React.useState<number>(1);
   const div_ref = React.useRef<HTMLDivElement>();
   React.useEffect(() => {
-    console.log(`trying to scroll to top: ${div_ref.current}`);
+    // console.log(`trying to scroll to top: ${div_ref.current}`);
     div_ref.current.scroll(0, 0);
   }, [props.scene]);
-  console.log(`HighLightLine.render() ${line}`);
+  // console.log(`HighLightLine.render() ${line}`);
   const viewport_height = Math.max(
     document.documentElement.clientHeight || 0,
     window.innerHeight || 0
@@ -54,9 +48,9 @@ const HighLightLine: React.FC<HighlightLineProps> = (props) => {
       },
       1
     );
-    console.log(
-      `findNearestLine(${scroll_position}) => ${nearest_line} (of ${props.scroll_position_map.length} entries)`
-    );
+    // console.log(
+    //   `findNearestLine(${scroll_position}) => ${nearest_line} (of ${props.scroll_position_map.length} entries)`
+    // );
     return nearest_line;
   };
   return (
@@ -96,6 +90,12 @@ const HighLightLine: React.FC<HighlightLineProps> = (props) => {
     </div>
   );
 };
+
+interface Props {
+  getPersonLabel: (speaker: string) => string;
+  ident: string;
+  scene: Scene;
+}
 
 const ShowScene: React.FC<Props> = (props) => {
   const scroll_position_map: number[] = [];
