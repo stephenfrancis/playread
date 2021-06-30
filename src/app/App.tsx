@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import Play from "./Play";
 
+import "../public/main.css";
+
 interface Props {}
 
 const App: React.FC<Props> = () => {

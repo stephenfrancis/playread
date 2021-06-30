@@ -7,11 +7,11 @@
   },
   "scripts": {
     "build": "yarn run build:client && yarn run build:convert",
-    "build:client": "yarn run parcel build src/public/index.html",
+    "build:client": "NODE_ENV=production ./node_modules/.bin/ts-node src/config/fuse.ts",
     "build:convert": "node src/convert/exec.js",
     "build:server": "npx tsc",
     "clean": "rm -f -r .cache dist/*",
-    "serve": "yarn run parcel serve src/public/index.html",
+    "start": "NODE_ENV=development ./node_modules/.bin/ts-node src/config/fuse.ts",
     "svg2react": "yarn run @svgr/cli src/assets/raw --out-dir src/assets/react --typescript",
     "web": "heroku local web"
   },
@@ -38,12 +38,11 @@
     "@types/react-dom": "^17.0",
     "@types/react-router": "^5.1",
     "@types/react-router-dom": "^5.1",
+    "fuse-box": "^4.0.1-next.7",
     "jest": "^26.6",
     "nyc": "^15.1",
-    "parcel": "2.0.0-beta.1",
     "ts-jest": "^26.4",
-    "ts-loader": "^8.0",
-    "typescript": "^4.1",
-    "ultimake": "^0.5"
+    "ts-node": "^10.0.0",
+    "typescript": "^4.1"
   }
 }
