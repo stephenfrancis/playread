@@ -46,11 +46,11 @@ a {
 }
 
 .header > div:nth-child(3) {
-  width: 50px;
+  width: 80px;
 }
 
 .header > div:nth-child(4) {
-  width: 80px;
+  width: 100px;
 }
 
 .header > div:nth-child(5) {

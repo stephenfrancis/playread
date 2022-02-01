@@ -1,10 +1,9 @@
 import * as React from "react";
-import { Route, Switch, useParams, useRouteMatch } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import Header from "./Header";
 import PlaySummary from "./PlaySummary";
 import Scene from "./Scene";
 import * as Types from "../types/Play";
-// import data from "../data/tempest.json";
 
 interface Props {}
 
@@ -72,7 +71,6 @@ const LoadedPlay: React.FC<LoadedProps> = (props) => {
 
 const Play: React.FC<Props> = () => {
   const params = useParams<{ play_id: string }>();
-  const { path } = useRouteMatch();
   const [play, setPlay] = React.useState<Types.Play>(null);
   if (!params.play_id) {
     throw new Error(`no play specified`);
@@ -89,16 +87,26 @@ const Play: React.FC<Props> = () => {
       });
   }
   return (
-    <Switch>
-      <Route path={`${path}/:act/:scene`}>
-        {!play && <Waiting />}
-        {play && <LoadedPlay play={play} play_id={params.play_id} />}
-      </Route>
-      <Route path={`${path}`}>
-        {!play && <Waiting />}
-        {play && <PlaySummary play={play} play_id={params.play_id} />}
-      </Route>
-    </Switch>
+    <Routes>
+      <Route
+        path={`/:act/:scene`}
+        element={
+          <>
+            {!play && <Waiting />}
+            {play && <LoadedPlay play={play} play_id={params.play_id} />}
+          </>
+        }
+      />
+      <Route
+        path="*"
+        element={
+          <>
+            {!play && <Waiting />}
+            {play && <PlaySummary play={play} play_id={params.play_id} />}
+          </>
+        }
+      />
+    </Routes>
   );
 };
 
