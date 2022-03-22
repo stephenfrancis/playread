@@ -3,16 +3,13 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "lib" : [
-      "es2015",
-      "dom"
-    ],
-    "module": "commonjs",
+    "lib": ["es2015", "dom"],
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "es3"
   },
   "exclude": [
-    "node_modules"
+    "../node_modules"
   ]
 }
