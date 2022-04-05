@@ -15,11 +15,11 @@
     "build": "yarn run build:client && yarn run build:convert",
     "build:client": "cd src && NODE_ENV=production rollup --config config/rollup.config.js",
     "build:convert": "node src/convert/exec.js",
-    "build:server": "cd src && npx tsc",
-    "clean": "rm -f -r .cache/* dist/*",
+    "build:server": "npx tsc -p src/tsconfig.json --noEmit",
+    "clean": "rm -f -r dist/*",
     "deploy": "firebase deploy",
     "start": "cd src && NODE_ENV=development rollup --watch --config config/rollup.config.js",
-    "svg2react": "yarn run @svgr/cli src/assets/raw --out-dir src/assets/react --typescript"
+    "svg2react": "node src/assets/svgr.js"
   },
   "dependencies": {
     "koa": "^2.13.4",
